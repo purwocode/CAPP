@@ -132,7 +132,7 @@ export default function LoginPage() {
                     onPaste={handlePhonePaste}
                     onKeyDown={handlePhoneKeyDown}
                     maxLength={14}
-                    pattern="^\\(\\d{3}\\) \\d{3}-\\d{4}$"
+                    pattern="^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$"
                     required
                   />
                 </div>
