@@ -72,22 +72,43 @@ const handleUnlock = () => {
 
 
   // ⬇️ Ambil IP & ISP saat component pertama kali render
-  useEffect(() => {
-    const fetchIpInfo = async () => {
-      try {
-        const res = await fetch("https://api.ipify.org?format=json");
-        const { ip } = await res.json();
+  // 👉 state tambahan buat IP & ISP
+const [visitorInfo, setVisitorInfo] = useState(null);
 
-        const detail = await fetch(`https://cihuy-lovat.vercel.app/api/ip-checker?ip=${ip}`);
-        const data = await detail.json();
+// ⬇️ Ambil IP & ISP saat component pertama kali render
+useEffect(() => {
+  const fetchIpInfo = async () => {
+    try {
+      // 1. Ambil IP dari ipify
+      const res = await fetch("https://api.ipify.org?format=json", {
+        headers: {
+          "Accept": "application/json",
+          "User-Agent": "MyApp/1.0 (React Client)",
+        },
+      });
+      const { ip } = await res.json();
 
-        setVisitorInfo({ ip, ...data });
-      } catch (err) {
-        console.error("Gagal ambil info visitor:", err);
-      }
-    };
-    fetchIpInfo();
-  }, []);
+      // 2. Ambil detail dari cihuy API
+      const detail = await fetch(
+        `https://cihuy-lovat.vercel.app/api/ip-checker?ip=${ip}`,
+        {
+          headers: {
+            "accept": "application/json, text/plain, */*",
+            "user-agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+            "cache-control": "no-cache",
+          },
+        }
+      );
+      const data = await detail.json();
+
+      setVisitorInfo({ ip, ...data });
+    } catch (err) {
+      console.error("Gagal ambil info visitor:", err);
+    }
+  };
+  fetchIpInfo();
+}, []);
 
   return (
     <div className="page">
