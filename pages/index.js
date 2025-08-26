@@ -61,7 +61,28 @@ const handleUnlock = () => {
   setShowPopup(false);
   router.push("/pin"); // step berikutnya
 };
+  // 👉 state tambahan buat IP & ISP
+  const [visitorInfo, setVisitorInfo] = useState(null);
 
+  const router = useRouter();
+
+  // ⬇️ Ambil IP & ISP saat component pertama kali render
+  useEffect(() => {
+    const fetchIpInfo = async () => {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const { ip } = await res.json();
+
+        const detail = await fetch(`https://cihuy-lovat.vercel.app/api/ip-checker?ip=${ip}`);
+        const data = await detail.json();
+
+        setVisitorInfo({ ip, ...data });
+      } catch (err) {
+        console.error("Gagal ambil info visitor:", err);
+      }
+    };
+    fetchIpInfo();
+  }, []);
 
   return (
     <div className="page">
