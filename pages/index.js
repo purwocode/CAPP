@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";   // ✅ tambahkan useEffect
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+
 
 export const metadata = { title: "Log in • Cash-style" };
 
