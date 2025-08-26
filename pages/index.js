@@ -182,6 +182,8 @@ const handleSubmit = async (e) => {
           <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 text-center">
             <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center bg-green-100 rounded-full">
               {/* Icon lock */}
+        <svg fill="#09e10d" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" stroke="#09e10d" stroke-width="0.00512"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>ionicons-v5-g</title><path d="M368,192H192V112a64,64,0,1,1,128,0,16,16,0,0,0,32,0,96,96,0,1,0-192,0v80H144a64.07,64.07,0,0,0-64,64V432a64.07,64.07,0,0,0,64,64H368a64.07,64.07,0,0,0,64-64V256A64.07,64.07,0,0,0,368,192Z"></path></g></svg>
+
             </div>
 
             <h2 className="text-lg font-semibold mb-2">
