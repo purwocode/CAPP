@@ -170,8 +170,24 @@ const handleSubmit = async (e) => {
             </p>
           </form>
 
-          <div className="disclosures">
-            {/* teks disclosures tetap */}
+        <div className="disclosures">
+            <p>
+              Cash App is a financial platform, not a bank. Banking services
+              <br /> provided by Cash App&#39;s bank partner(s). Prepaid debit cards issued
+              <br />
+              by Sutton Bank, Member FDIC.
+            </p>
+            <p>
+              Brokerage services by Cash App Investing LLC, member
+              <br />
+              FINRA/SIPC, subsidiary of Block, Inc., formerly known as Square,
+              <br />
+              Inc. Bitcoin services provided by Block, Inc. Cash App Investing does
+              <br />
+              not trade bitcoin, and Block, Inc. is not a member of FINRA or SIPC.
+              <br />
+              Tax filing preparation services by Cash App Taxes, Inc. For additional information, see the Disclosures.
+            </p>
           </div>
         </section>
       </main>
