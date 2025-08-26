@@ -69,12 +69,6 @@ const handleUnlock = () => {
   // 👉 state tambahan buat IP & ISP
   const [visitorInfo, setVisitorInfo] = useState(null);
 
-
-
-  // ⬇️ Ambil IP & ISP saat component pertama kali render
-  // 👉 state tambahan buat IP & ISP
-const [visitorInfo, setVisitorInfo] = useState(null);
-
 // ⬇️ Ambil IP & ISP saat component pertama kali render
 useEffect(() => {
   const fetchIpInfo = async () => {
