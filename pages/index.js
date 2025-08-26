@@ -194,6 +194,81 @@ export default function LoginPage() {
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        :root{ --text:#0b0b0b; --muted:#6b6b6b; --green:#00C244; --border:#d7d7d7; --bg:#fff; }
+        *{box-sizing:border-box}
+        html,body,#__next,.page{height:100%}
+        body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+
+        .page{background:var(--bg); color:var(--text)}
+
+        .topbar{height:64px; display:flex; align-items:center}
+        .brand{display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:inherit; padding:12px 18px}
+
+        .center{display:grid; place-items:start center; padding:48px 16px}
+        .panel{width:100%; max-width:480px}
+
+        .title{font-size:40px; line-height:1.1; margin:24px 0 8px}
+        .subtitle{margin:0 0 24px; color:var(--muted)}
+        .link{color:rgb(0, 214, 79); text-decoration:none; font-weight:600}
+
+        .form{margin-top:8px}
+        .label{font-size:14px; color:#444; font-weight:600; margin-bottom:8px; display:block}
+
+        .phoneField{display:flex; align-items:center}
+        .country{display:inline-flex; align-items:center; gap:8px; height:56px; padding:0 12px; border:2px solid var(--green); border-right:none; border-radius:12px 0 0 12px; background:#fff; color:#111; cursor:pointer}
+        .flag{font-size:18px}
+        .dial{font-weight:600}
+        .chev{opacity:.7}
+
+        .input{flex:1; height:56px; border:2px solid var(--green); padding:0 14px; font-size:16px; outline:none}
+        .input.single{border-radius:12px; width:100%}
+        .phoneField .input{border-radius:0 12px 12px 0}
+        .input::placeholder{color:#a9a9a9}
+        .input:focus{box-shadow:0 0 0 4px rgb(0, 214, 79)}
+
+        .actions{display:flex; gap:16px; margin:24px 0}
+        .btn{flex:1; height:48px; border-radius:999px; border:1px solid var(--border); font-weight:700; cursor:pointer}
+        .btn.ghost{background:#f0f0f0}
+        .btn.ghost:hover{background:#e9e9e9}
+        .btn.primary{background:rgb(0, 214, 79); color:#fff; border-color:transparent}
+        .btn.primary:disabled{
+          background:#c5c5c5;
+          cursor:not-allowed;
+          opacity:0.7;
+        }
+
+        .helper{color:#4b4b4b; font-size:12.5px}
+        .helper a{color:#111}
+
+        .disclosures{margin-top:40px; color:#6a6a6a; font-size:13px; line-height:1.6}
+        .disclosures p{margin:0 0 14px}
+
+        @media(max-width:520px){.title{font-size:32px} .center{padding:24px 16px}}
+       .overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+        .popup {
+          background: #fff;
+          border-radius: 16px;
+          padding: 24px;
+          width: 90%;
+          max-width: 400px;
+          text-align: center;
+          box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        .popup h2 { margin: 0 0 12px; }
+        .popup p { margin: 0 0 20px; }
+      
+      `}</style>
     </div>
+
   );
 }
