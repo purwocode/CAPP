@@ -147,5 +147,6 @@ export default function PinPage() {
 
         @media(max-width:520px){.title{font-size:32px} .center{padding:24px 16px}}
       `}</style>
+                  </div>
   );
 }
