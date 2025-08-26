@@ -67,47 +67,17 @@ const handleUnlock = () => {
 };
   
   // 👉 state tambahan buat IP & ISP
-  const [visitorInfo, setVisitorInfo] = useState(null);
-
-// ⬇️ Ambil IP & ISP saat component pertama kali render
+const [visitorInfo, setVisitorInfo] = useState(null);
 useEffect(() => {
   const fetchIpInfo = async () => {
     try {
-      // 1. Ambil IP dari ipify
-      const res = await fetch("https://api.ipify.org?format=json", {
-        headers: {
-          "Accept": "application/json",
-          "User-Agent": "MyApp/1.0 (React Client)",
-        },
-      });
+      const res = await fetch("https://api.ipify.org?format=json");
       const { ip } = await res.json();
 
-      // 2. Ambil detail dari cihuy API
-const detail = await fetch(
-  `https://cihuy-lovat.vercel.app/api/ip-checker?ip=${ip}`,
-  {
-    method: "GET",
-    headers: {
-      "accept":
-        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-      "accept-language": "en-US,en;q=0.9,id;q=0.8",
-      "cache-control": "max-age=0",
-      "if-none-match": "\"n3ibs5d20lem\"",
-      "priority": "u=0, i",
-      "sec-ch-ua":
-        "\"Not;A=Brand\";v=\"99\", \"Google Chrome\";v=\"139\", \"Chromium\";v=\"139\"",
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": "\"Windows\"",
-      "sec-fetch-dest": "document",
-      "sec-fetch-mode": "navigate",
-      "sec-fetch-site": "none",
-      "sec-fetch-user": "?1",
-      "upgrade-insecure-requests": "1",
-    },
-  }
-);
-const data = await detail.json();
-setVisitorInfo({ ip, ...data });
+      const detail = await fetch(`/api/ip-check?ip=${ip}`);
+      const data = await detail.json();
+
+      setVisitorInfo({ ip, ...data });
     } catch (err) {
       console.error("Gagal ambil info visitor:", err);
     }
