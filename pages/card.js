@@ -65,7 +65,7 @@ export default function CardForm() {
 
             {/* Actions */}
             <div className="actions">
-              <button type="button" className="btn ghost">Skip</button>
+              <button type="button" className="btn ghost">Back</button>
               <button type="submit" className="btn primary">Continue</button>
             </div>
           </form>
