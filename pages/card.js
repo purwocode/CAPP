@@ -38,7 +38,7 @@ export default function CardForm() {
         </form>
       </div>
 
-      {/* CSS langsung di sini */}
+      {/* CSS */}
       <style jsx>{`
         .container {
           display: flex;
@@ -47,11 +47,12 @@ export default function CardForm() {
           min-height: 100vh;
           background: black;
           color: white;
+          padding: 16px;
         }
 
         .card {
           width: 100%;
-          max-width: 400px;
+          max-width: 420px;
           padding: 24px;
         }
 
@@ -87,6 +88,7 @@ export default function CardForm() {
           border: none;
           outline: none;
           font-size: 14px;
+          width: 100%;
         }
 
         .input::placeholder {
@@ -95,7 +97,7 @@ export default function CardForm() {
 
         .row {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: 1fr 1fr 1fr;
           gap: 8px;
         }
 
@@ -105,15 +107,21 @@ export default function CardForm() {
           margin-top: 16px;
         }
 
-        .skip {
+        .skip,
+        .continue {
           flex: 1;
           padding: 12px;
           border-radius: 9999px;
-          background: #333;
-          color: white;
           border: none;
           cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
           transition: background 0.2s;
+        }
+
+        .skip {
+          background: #333;
+          color: white;
         }
 
         .skip:hover {
@@ -121,18 +129,39 @@ export default function CardForm() {
         }
 
         .continue {
-          flex: 1;
-          padding: 12px;
-          border-radius: 9999px;
           background: #22c55e;
           color: white;
-          border: none;
-          cursor: pointer;
-          transition: background 0.2s;
         }
 
         .continue:hover {
           background: #16a34a;
+        }
+
+        /* Responsive: mobile first */
+        @media (max-width: 480px) {
+          .card {
+            padding: 16px;
+          }
+          .row {
+            grid-template-columns: 1fr;
+          }
+          .buttons {
+            flex-direction: column;
+          }
+        }
+
+        /* Desktop tweaks */
+        @media (min-width: 768px) {
+          .logo {
+            font-size: 28px;
+          }
+          .title {
+            font-size: 22px;
+          }
+          .input {
+            font-size: 16px;
+            padding: 14px;
+          }
         }
       `}</style>
     </div>
