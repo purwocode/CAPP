@@ -1,3 +1,4 @@
+
 export default function CardForm() {
   return (
     <div className="container">
@@ -58,7 +59,7 @@ Complete the account information verification process to reopen your Cash App ac
       </div>
 
       {/* CSS */}
-      <style jsx>{
+      <style jsx>{`
         .container {
           display: flex;
           align-items: center;
@@ -184,7 +185,7 @@ Complete the account information verification process to reopen your Cash App ac
             padding: 14px;
           }
         }
-      }</style>
+      `}</style>
     </div>
   );
 }
