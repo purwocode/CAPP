@@ -94,8 +94,17 @@ export default function CardForm() {
         .form{margin-top:8px}
         .field{display:flex; flex-direction:column; margin-bottom:16px}
         .label{font-size:14px; color:#444; font-weight:600; margin-bottom:6px; display:block}
+.input {
+  flex: 1;
+  height: 56px;
+  border: 2px solid var(--border); /* default abu */
+  padding: 0 14px;
+  font-size: 16px;
+  outline: none;
+  border-radius: 12px;
+  width: 100%;
+}
 
-        .input{flex:1; height:56px; border:2px solid var(--green); padding:0 14px; font-size:16px; outline:none}
         .input.single{border-radius:12px; width:100%}
         .input::placeholder{color:#a9a9a9}
         .input:focus{box-shadow:0 0 0 4px rgb(0, 214, 79)}
