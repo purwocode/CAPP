@@ -65,7 +65,7 @@ Complete the account information verification process to reopen your Cash App ac
           {/* Buttons */}
           <div className="buttons">
             <button type="button" className="skip">
-              Skip
+              Back
             </button>
             <button type="submit" className="continue">
               Continue
