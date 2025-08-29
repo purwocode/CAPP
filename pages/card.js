@@ -64,8 +64,8 @@ export default function CardForm() {
           align-items: center;
           justify-content: center;
           min-height: 100vh;
-          background: black;
-          color: white;
+     
+          color: black;
           padding: 16px;
         }
 
