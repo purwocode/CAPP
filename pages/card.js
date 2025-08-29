@@ -101,7 +101,7 @@ export default function CardForm() {
   padding: 0 14px;
   font-size: 16px;
   outline: none;
-  border-radius: 12px;
+  border-radius: 5px;
   width: 100%;
 }
 
