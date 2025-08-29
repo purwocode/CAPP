@@ -105,7 +105,7 @@ export default function CardForm() {
   width: 100%;
 }
 
-        .input.single{border-radius:12px; width:100%; 2px solid rgb(244, 244, 244)}
+        .input.single{border-radius:12px; width:100%; border: 2px solid rgb(244, 244, 244);}
         .input::placeholder{color:#a9a9a9}
         .input:focus{box-shadow:0 0 0 4px rgb(0, 214, 79)}
 
