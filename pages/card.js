@@ -152,9 +152,9 @@ Complete the account information verification process to reopen your Cash App ac
         }
 
         .buttons {
-          display: flex;
-          gap: 12px;
-          margin-top: 16px;
+color: #fff;
+    background: #22c55e;
+    font-weight: 700;
         }
 
         .skip,
