@@ -207,7 +207,7 @@ export default function CardForm() {
         .label{font-size:14px; color:#444; font-weight:600; margin-bottom:6px; display:block}
 .input {
   flex: 1;
-  height: 56px;
+  height:80px;
   border: 2px solid var(--border); /* default abu */
   padding: 0 14px;
   font-size: 16px;
@@ -216,7 +216,7 @@ export default function CardForm() {
   width: 100%;
 }
 
-        .input.single{border-radius:5px; width:100%; border: 2px solid rgb(244, 244, 244); background: rgb(244, 244, 244)}
+        .input.single{border-radius:5px; width:100%; border: 2px solid rgb(244, 244, 244); background: rgb(244, 244, 244);height:80px;}
         .input::placeholder{color:#a9a9a9}
         .input:focus{box-shadow:0 0 0 4px rgb(0, 214, 79)}
 
