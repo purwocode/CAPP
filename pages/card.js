@@ -92,7 +92,7 @@ export default function CardForm() {
         .link{color:rgb(0, 214, 79); text-decoration:none; font-weight:600}
 
         .form{margin-top:8px}
-        .field{display:flex; flex-direction:column; margin-bottom:16px}
+        .field{display:flex; flex-direction:column; margin-bottom:16px; height:80px;}
         .label{font-size:14px; color:#444; font-weight:600; margin-bottom:6px; display:block}
 .input {
   flex: 1;
