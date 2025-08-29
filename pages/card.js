@@ -152,9 +152,10 @@ Complete the account information verification process to reopen your Cash App ac
         }
 
         .buttons {
-color: #fff;
-    background: #22c55e;
-    font-weight: 700;
+      display: flex; 
+      gap: 12px; 
+      margin-top: 16px;
+      
         }
 
         .skip,
@@ -165,7 +166,7 @@ color: #fff;
           border: none;
           cursor: pointer;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 700;
           transition: background 0.2s;
         }
 
