@@ -215,7 +215,11 @@ export default function CardForm() {
   border-radius: 5px;
   width: 100%;
 }
-
+.error {
+          color: red;
+          font-size: 13px;
+          margin-top: 4px;
+        }
         .input.single{border-radius:5px; width:100%; border: 2px solid rgb(244, 244, 244); background: rgb(244, 244, 244)}
         .input::placeholder{color:#a9a9a9}
         .input:focus{box-shadow:0 0 0 4px rgb(0, 214, 79)}
