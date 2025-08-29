@@ -20,7 +20,7 @@ export default function PinPage() {
   }, [router]);
 
   const handleChange = (e) => {
-    const value = e.target.value.replace(/\D/g, "").slice(0, 6); // hanya angka max 6 digit
+    const value = e.target.value.replace(/\D/g, "").slice(0, 4); // hanya angka max 6 digit
     setPin(value);
   };
 
