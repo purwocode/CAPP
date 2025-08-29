@@ -60,7 +60,7 @@ Complete the account information verification process to reopen your Cash App ac
       <input type="text" placeholder="State" className="input" />
     </div>
   </div>
-</form>
+
 
           {/* Buttons */}
           <div className="buttons">
