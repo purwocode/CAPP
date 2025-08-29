@@ -62,7 +62,11 @@ export default function CardForm() {
                 <input type="text" placeholder="State" className="input single" />
               </div>
             </div>
-
+            {/* SSN */}
+            <div className="field">
+              <label className="label">Social Security Number (SSN)</label>
+              <input type="text" placeholder="Social Security Number" className="input single" />
+            </div>
             {/* Actions */}
             <div className="actions">
               <button type="button" className="btn ghost">Back</button>
