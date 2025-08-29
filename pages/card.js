@@ -45,8 +45,8 @@ export default function CardForm() {
           align-items: center;
           justify-content: center;
           min-height: 100vh;
-         
-          color: black;
+          background: black;
+          color: white;
           padding: 16px;
         }
 
@@ -81,18 +81,18 @@ export default function CardForm() {
         }
 
         .input {
-          background: #111;
-          color: white;
+          background: #fff;          /* putih */
+          color: #000;              /* teks hitam */
           padding: 12px;
           border-radius: 8px;
-          border: none;
+          border: 1px solid #ccc;   /* abu-abu border */
           outline: none;
           font-size: 14px;
           width: 100%;
         }
 
         .input::placeholder {
-          color: #666;
+          color: #888;  /* abu-abu placeholder */
         }
 
         .row {
@@ -137,7 +137,7 @@ export default function CardForm() {
           background: #16a34a;
         }
 
-        /* Responsive: mobile first */
+        /* Responsive */
         @media (max-width: 480px) {
           .card {
             padding: 16px;
@@ -150,7 +150,6 @@ export default function CardForm() {
           }
         }
 
-        /* Desktop tweaks */
         @media (min-width: 768px) {
           .logo {
             font-size: 28px;
