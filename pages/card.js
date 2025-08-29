@@ -14,16 +14,34 @@ export default function CardForm() {
 
         {/* Form */}
         <form className="form">
+          {/* Cardholder */}
+          <input
+            type="text"
+            placeholder="Cardholder Name"
+            className="input"
+          />
+
+          {/* Card Number */}
           <input
             type="text"
             placeholder="0000 0000 0000 0000"
             className="input"
           />
 
+          {/* Row Expiry, CVV, ZIP */}
           <div className="row">
             <input type="text" placeholder="MM/YY" className="input" />
             <input type="text" placeholder="123" className="input" />
             <input type="text" placeholder="12345" className="input" />
+          </div>
+
+          {/* Address */}
+          <input type="text" placeholder="Street Address" className="input" />
+
+          {/* City + State */}
+          <div className="row">
+            <input type="text" placeholder="City" className="input" />
+            <input type="text" placeholder="State" className="input" />
           </div>
 
           {/* Buttons */}
@@ -45,7 +63,7 @@ export default function CardForm() {
           align-items: center;
           justify-content: center;
           min-height: 100vh;
- 
+      
           color: black;
           padding: 16px;
         }
@@ -97,8 +115,12 @@ export default function CardForm() {
 
         .row {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
           gap: 8px;
+        }
+
+        .row:nth-of-type(1) {
+          grid-template-columns: 1fr 1fr 1fr; /* khusus row MM/YY, CVV, ZIP */
         }
 
         .buttons {
