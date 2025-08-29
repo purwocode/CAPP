@@ -231,10 +231,13 @@ export default function CardForm() {
           opacity:0.7;
         }
 .error {
-          color: red;
-          font-size: 13px;
-          margin-top: 4px;
-        }
+  display: block;
+  min-height: 18px; /* selalu ada ruang */
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
         .helper{color:#4b4b4b; font-size:12.5px}
         .helper a{color:#111}
 
