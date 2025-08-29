@@ -83,7 +83,7 @@ Complete the account information verification process to reopen your Cash App ac
           min-height: 100vh;
      
           color: black;
-          padding: 16px;
+          padding: 50px;
         }
 
         .card {
