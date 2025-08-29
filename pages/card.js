@@ -76,6 +76,10 @@ Complete the account information verification process to reopen your Cash App ac
 
       {/* CSS */}
       <style jsx>{`
+              :root{ --text:#0b0b0b; --muted:#6b6b6b; --green:#00C244; --border:#d7d7d7; --bg:#fff; }
+        *{box-sizing:border-box}
+        html,body,#__next,.page{height:100%}
+        body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
         .container {
           display: flex;
           align-items: center;
@@ -83,7 +87,7 @@ Complete the account information verification process to reopen your Cash App ac
           min-height: 100vh;
      
           color: black;
-          padding: 50px;
+          margin-top: 50px;
         }
 
         .card {
