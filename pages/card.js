@@ -66,144 +66,133 @@ Complete the account information verification process to reopen your Cash App ac
       </div>
 
       {/* CSS */}
-    <style jsx>{`
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    color: black;
-    padding: 16px;
-  }
+      <style jsx>{`
+        .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+     
+          color: black;
+          padding: 16px;
+        }
 
-  .card {
-    width: 100%;
-    max-width: 420px;
-    padding: 24px;
-  }
+        .card {
+          width: 100%;
+          max-width: 420px;
+          padding: 24px;
+        }
 
-  .logo {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-  }
+        .logo {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+        }
+        .title {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
 
-  .title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
+        .subtitle {
+          color: #888;
+          font-size: 14px;
+          margin-bottom: 24px;
+        }
 
-  .subtitle {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
+        .form {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+        .input {
+          background: #fff;          /* putih */
+          color: #000;              /* teks hitam */
+          padding: 12px;
+          border-radius: 8px;
+          border: 1px solid #ccc;   /* abu-abu border */
+          outline: none;
+          font-size: 14px;
+          width: 100%;
+        }
 
-  .label {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 4px;
-    color: #333;
-    display: block; /* supaya selalu berada di atas input */
-  }
+        .input::placeholder {
+          color: #888;  /* abu-abu placeholder */
+        }
 
-  .input {
-    background: #fff;
-    color: #000;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 14px;
-    width: 100%;
-  }
+        .row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
 
-  .input::placeholder {
-    color: #888;
-  }
+        .row:nth-of-type(1) {
+          grid-template-columns: 1fr 1fr 1fr; /* khusus row MM/YY, CVV, ZIP */
+        }
 
-  .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
+        .buttons {
+          display: flex;
+          gap: 12px;
+          margin-top: 16px;
+        }
 
-  /* khusus row Expiry, CVV, ZIP */
-  .row:nth-of-type(1) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+        .skip,
+        .continue {
+          flex: 1;
+          padding: 12px;
+          border-radius: 9999px;
+          border: none;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          transition: background 0.2s;
+        }
 
-  .buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-  }
+        .skip {
+          background: #333;
+          color: white;
+        }
 
-  .skip,
-  .continue {
-    flex: 1;
-    padding: 12px;
-    border-radius: 9999px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
+        .skip:hover {
+          background: #444;
+        }
 
-  .skip {
-    background: #333;
-    color: white;
-  }
-  .skip:hover {
-    background: #444;
-  }
+        .continue {
+          background: #22c55e;
+          color: white;
+        }
 
-  .continue {
-    background: #22c55e;
-    color: white;
-  }
-  .continue:hover {
-    background: #16a34a;
-  }
+        .continue:hover {
+          background: #16a34a;
+        }
 
-  /* Responsive */
-  @media (max-width: 480px) {
-    .card {
-      padding: 16px;
-    }
-    .row {
-      grid-template-columns: 1fr;
-    }
-    .buttons {
-      flex-direction: column;
-    }
-  }
+        /* Responsive */
+        @media (max-width: 480px) {
+          .card {
+            padding: 16px;
+          }
+          .row {
+            grid-template-columns: 1fr;
+          }
+          .buttons {
+            flex-direction: column;
+          }
+        }
 
-  @media (min-width: 768px) {
-    .logo {
-      font-size: 28px;
-    }
-    .title {
-      font-size: 22px;
-    }
-    .input {
-      font-size: 16px;
-      padding: 14px;
-    }
-    .label {
-      font-size: 15px;
-    }
-  }
-`}</style>
-
+        @media (min-width: 768px) {
+          .logo {
+            font-size: 28px;
+          }
+          .title {
+            font-size: 22px;
+          }
+          .input {
+            font-size: 16px;
+            padding: 14px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
