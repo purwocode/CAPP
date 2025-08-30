@@ -232,13 +232,24 @@ export default function CardForm() {
           cursor:not-allowed;
           opacity:0.7;
         }
+.input-field {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  height: 48px; /* tinggi input tetap */
+  box-sizing: border-box;
+}
+
 .error {
   display: block;
-  min-height: 18px; /* selalu ada ruang */
-  color: red;
+  min-height: 18px; /* selalu ada ruang, walau tidak ada error */
   font-size: 13px;
+  color: red;
   margin-top: 4px;
 }
+
 
         .helper{color:#4b4b4b; font-size:12.5px}
         .helper a{color:#111}
