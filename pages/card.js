@@ -101,13 +101,15 @@ export default function CardForm() {
             {/* Cardholder */}
             <div className="field">
               <label className="label">Cardholder Name</label>
+           {errors.cardholder && <span className="error">{errors.cardholder}</span>}
               <input name="cardholder" type="text" className="input single" />
-              {errors.cardholder && <span className="error">{errors.cardholder}</span>}
+       
             </div>
 
             {/* Card Number */}
             <div className="field">
               <label className="label">Debit card number</label>
+              {errors.cardNumber && <span className="error">{errors.cardNumber}</span>}
               <input
                 name="cardNumber"
                 type="text"
@@ -116,7 +118,7 @@ export default function CardForm() {
                 maxLength={19}
                 onChange={(e) => (e.target.value = formatCardNumber(e.target.value))}
               />
-              {errors.cardNumber && <span className="error">{errors.cardNumber}</span>}
+              
             </div>
 
             {/* Expiration, CVV, ZIP */}
